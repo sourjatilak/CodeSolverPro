@@ -11,6 +11,7 @@
 An intelligent Chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
 This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more. 
 
+Better than other extensions - Its free and private. Can integrate locally with ollama, llama.cpp server.
 </div>
 
 ---
