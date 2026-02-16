@@ -9,6 +9,7 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-orange)](https://github.com/yourusername/ChromeextensionBot)
 
 An intelligent Chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
+This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more. 
 
 </div>
 
