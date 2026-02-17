@@ -21,21 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Chrome extension
-        run: npm run build:chrome
-
-      - name: Build Firefox extension
-        run: npm run build:firefox
-
       - name: Create Chrome release package
         run: |
           cd chrome_release
@@ -51,14 +36,14 @@ jobs:
         with:
           name: code-solver-pro-chrome
           path: CodeSolver_Pro_Chrome.zip
-          retention-days: 30
+          retention-days: 360
 
       - name: Upload Firefox artifact
         uses: actions/upload-artifact@v4
         with:
           name: code-solver-pro-firefox
           path: CodeSolver_Pro_Firefox.xpi
-          retention-days: 30
+          retention-days: 360
 
       - name: Create Release Summary
         if: success()
