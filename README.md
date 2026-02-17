@@ -1,4 +1,4 @@
-# CodeSolver Pro - Chrome Extension
+# CodeSolver Pro - Chrome / Firefox Extension
 
 <div align="center">
 
