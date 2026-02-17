@@ -18,7 +18,8 @@ Better than other extensions - Its free and private. Can integrate locally with 
 </div>
 
 ---
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/QX0T8DcmDpw/0.jpg)](https://www.youtube.com/watch?v=QX0T8DcmDpw)
+### Click below to view the extension:
+- [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/QX0T8DcmDpw/0.jpg)](https://www.youtube.com/watch?v=QX0T8DcmDpw)
 ---
 
 ## ⚡ Quick Start
