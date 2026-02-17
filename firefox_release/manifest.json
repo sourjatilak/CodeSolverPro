@@ -1,0 +1,57 @@
+{
+  "manifest_version": 2,
+  "name": "CodeSolver Pro",
+  "version": "1.0.0",
+  "description": "AI-Powered coding interview assistant with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more.",
+  "author": "STB",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "webNavigation",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "injected.js"
+  ],
+  "sidebar_action": {
+    "default_title": "CodeSolver Pro",
+    "default_panel": "sidepanel.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "browser_action": {
+    "default_title": "Open CodeSolver Pro",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "codesolver-pro@extension.local",
+      "strict_min_version": "115.0"
+    }
+  }
+}

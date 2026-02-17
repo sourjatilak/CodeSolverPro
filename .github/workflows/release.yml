@@ -1,0 +1,148 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Chrome extension
+        run: npm run build:chrome
+
+      - name: Build Firefox extension
+        run: npm run build:firefox
+
+      - name: Create Chrome release package
+        run: |
+          cd chrome_release
+          zip -r ../CodeSolver_Pro_Chrome.zip *
+
+      - name: Create Firefox release package
+        run: |
+          cd firefox_release
+          zip -r ../CodeSolver_Pro_Firefox.xpi *
+
+      - name: Upload Chrome artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-solver-pro-chrome
+          path: CodeSolver_Pro_Chrome.zip
+          retention-days: 30
+
+      - name: Upload Firefox artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-solver-pro-firefox
+          path: CodeSolver_Pro_Firefox.xpi
+          retention-days: 30
+
+      - name: Create Release Summary
+        if: success()
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Chrome Extension: \`CodeSolver_Pro_Chrome.zip\`" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Firefox Add-on: \`CodeSolver_Pro_Firefox.xpi\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Installation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Chrome:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download the ZIP file" >> $GITHUB_STEP_SUMMARY
+          echo "2. Extract to a folder" >> $GITHUB_STEP_SUMMARY
+          echo "3. Open \`chrome://extensions/\`" >> $GITHUB_STEP_SUMMARY
+          echo "4. Enable Developer Mode" >> $GITHUB_STEP_SUMMARY
+          echo "5. Click 'Load unpacked' and select the folder" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Firefox:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download the XPI file" >> $GITHUB_STEP_SUMMARY
+          echo "2. Open \`about:addons\`" >> $GITHUB_STEP_SUMMARY
+          echo "3. Click the gear icon → 'Install Add-on From File...'" >> $GITHUB_STEP_SUMMARY
+          echo "4. Select the XPI file" >> $GITHUB_STEP_SUMMARY
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Chrome artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: code-solver-pro-chrome
+          path: .
+
+      - name: Download Firefox artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: code-solver-pro-firefox
+          path: .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            CodeSolver_Pro_Chrome.zip
+            CodeSolver_Pro_Firefox.xpi
+          body: |
+            ## CodeSolver Pro v${{ github.ref_name }}
+
+            ### Downloads
+
+            - **Chrome Extension**: `CodeSolver_Pro_Chrome.zip`
+            - **Firefox Add-on**: `CodeSolver_Pro_Firefox.xpi`
+
+            ### Installation
+
+            #### Chrome
+            1. Download and extract the ZIP file
+            2. Open `chrome://extensions/`
+            3. Enable Developer Mode
+            4. Click "Load unpacked" and select the extracted folder
+
+            #### Firefox
+            1. Download the XPI file
+            2. Open `about:addons`
+            3. Click the gear icon → "Install Add-on From File..."
+            4. Select the XPI file
+
+            ### What's New
+
+            See the [CHANGELOG](../../blob/main/CHANGELOG.md) for details.
+
+            ---
+
+            **Built with ❤️ for the developer community**
+          draft: false
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

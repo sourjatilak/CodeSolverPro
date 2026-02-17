@@ -4,14 +4,13 @@
 
 **AI-Powered Coding Interview Assistant with Undetectable Side Panel**
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green?logo=google-chrome)](https://chrome.google.com/webstore)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add-on-orange?logo=firefox)]
-[![Manifest V2](https://img.shields.io/badge/Manifest-V2-blue)]
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green?logo=google-chrome)]
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)]
 [![Version](https://img.shields.io/badge/Version-1.0.0-orange)]
 
-An intelligent Chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
-This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more. 
+An intelligent chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
+
+This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more.
 
 Better than other extensions - Its free and private. Can integrate locally with ollama, llama.cpp server.
 
@@ -24,7 +23,7 @@ Better than other extensions - Its free and private. Can integrate locally with 
 ### Installation
 
 1. **Download the Release**
-   - Download and extract the (CodeSolver_Pro_Chrome.zip & CodeSolver_Pro_Firefox.xpi) ZIP file from the [Releases](../../releases) page
+   - Download and extract the ZIP file from the [Releases](../../releases) page
 
 2. **Load in Chrome**
    ```bash
@@ -35,30 +34,10 @@ Better than other extensions - Its free and private. Can integrate locally with 
    - Click **"Load unpacked"**
    - Select the extracted folder
 
-3. **Verify Installation for Chrome**
+3. **Verify Installation**
    - Click the Extensions icon in Chrome's toolbar
    - Find "CodeSolver Pro" and click it
    - The side panel should open
-
-4. **Load in Firefox**
-   ```bash
-   # Open Firefox and navigate to:
-   about:debugging#/runtime/this-firefox
-   ```
-   - Click **"Load Temporary Add-on..."**
-   - Select the `manifest.json` file from the extracted folder
-
-   **OR** for permanent installation:
-   - Open Firefox and go to `about:addons`
-   - Click the gear icon → **"Install Add-on From File..."**
-   - Select the extracted folder where (CodeSolver_Pro_Firefox.xpi) is present.
-
-5. **Verify Installation for FireFox**
-   - Click the Extensions icon in Firefox's toolbar
-   - Find "CodeSolver Pro" and click it
-   - The sidebar should open
-
-
 
 ### First Time Setup
 
@@ -217,13 +196,12 @@ Model: llama3.1
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Technical Details
 
-This extension uses Chrome's Manifest V3 with:
-- **Side Panel API**: Integrated experience without opening new tabs
-- **Content Scripts**: Problem detection and parsing
-- **Injected Scripts**: Page-context focus protection
-- **Service Worker**: Background processing and tab management
+**API Used**: chrome.*
+**Manifest Version**: V3
+**Panel Type**: Side Panel
+**Minimum Chrome Version**: 114
 
 ---
 
@@ -239,7 +217,7 @@ This extension uses Chrome's Manifest V3 with:
 
 ## 📋 Requirements
 
-- **Chrome Browser**: Version 114 or higher (for Side Panel API)
+- **Chrome Browser**: Version 114 or higher
 - **AI Provider**: API key or local LLM setup
 
 ---
@@ -255,13 +233,15 @@ This extension uses Chrome's Manifest V3 with:
 - Verify API key is correct
 - Check API credits/quota
 - Try a different profile
-- Check Network tab for errors
+- Check Browser Console for errors (F12)
 
 **Problem: Focus protection not working**
 - Refresh the problem page
 - Re-open the side panel
 - Check console for errors
 - Note: Some platforms have advanced detection
+
+**Debug URL**: `chrome://extensions/`
 
 ---
 
@@ -302,6 +282,8 @@ Contributions are welcome! Please visit the [main repository](../../) to:
 
 [GitHub](../../) • [Issues](../../issues) • [Releases](../../releases)
 
-**Version 1.0.0** • Built on 2026-02-16
+**Version 1.0.0** • Built on 2026-02-17
+
+**Chrome Edition**
 
 </div>

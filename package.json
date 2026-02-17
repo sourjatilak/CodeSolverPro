@@ -1,0 +1,29 @@
+{
+    "name": "CodeSolverPro",
+    "version": "1.0.0",
+    "description": "A Chrome extension that provides an undetectable side panel for solving coding interview questions using AI. The side panel doesn't trigger focus detection on the main page, making it useful for practice during online assessments.",
+    "main": "background.js",
+    "scripts":
+    {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "node build.js",
+        "build:chrome": "node build.js chrome",
+        "build:firefox": "node build.js firefox",
+        "build:all": "node build.js all",
+        "prebuild": "npm install"
+    },
+    "keywords":
+    [],
+    "author": "STB",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies":
+    {
+        "sharp": "^0.34.5"
+    },
+    "devDependencies":
+    {
+        "terser": "^5.36.0",
+        "javascript-obfuscator": "^4.1.1"
+    }
+}

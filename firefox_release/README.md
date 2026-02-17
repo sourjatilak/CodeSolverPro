@@ -1,17 +1,16 @@
-# CodeSolver Pro - Chrome Extension
+# CodeSolver Pro - Firefox Add-on
 
 <div align="center">
 
-**AI-Powered Coding Interview Assistant with Undetectable Side Panel**
+**AI-Powered Coding Interview Assistant with Undetectable Sidebar**
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green?logo=google-chrome)](https://chrome.google.com/webstore)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![Firefox Add-on](https://img.shields.io/badge/Firefox-Add-on-orange?logo=firefox)]
 [![Manifest V2](https://img.shields.io/badge/Manifest-V2-blue)]
 [![Version](https://img.shields.io/badge/Version-1.0.0-orange)]
 
-An intelligent Chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
-This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more. 
+An intelligent firefox extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
+
+This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more.
 
 Better than other extensions - Its free and private. Can integrate locally with ollama, llama.cpp server.
 
@@ -24,23 +23,9 @@ Better than other extensions - Its free and private. Can integrate locally with 
 ### Installation
 
 1. **Download the Release**
-   - Download and extract the (CodeSolver_Pro_Chrome.zip & CodeSolver_Pro_Firefox.xpi) ZIP file from the [Releases](../../releases) page
+   - Download and extract the ZIP file from the [Releases](../../releases) page
 
-2. **Load in Chrome**
-   ```bash
-   # Open Chrome and navigate to:
-   chrome://extensions/
-   ```
-   - Enable **Developer mode** (toggle in top-right)
-   - Click **"Load unpacked"**
-   - Select the extracted folder
-
-3. **Verify Installation for Chrome**
-   - Click the Extensions icon in Chrome's toolbar
-   - Find "CodeSolver Pro" and click it
-   - The side panel should open
-
-4. **Load in Firefox**
+2. **Load in Firefox**
    ```bash
    # Open Firefox and navigate to:
    about:debugging#/runtime/this-firefox
@@ -51,14 +36,12 @@ Better than other extensions - Its free and private. Can integrate locally with 
    **OR** for permanent installation:
    - Open Firefox and go to `about:addons`
    - Click the gear icon → **"Install Add-on From File..."**
-   - Select the extracted folder where (CodeSolver_Pro_Firefox.xpi) is present.
+   - Select the extracted folder (create a .xpi package first)
 
-5. **Verify Installation for FireFox**
+3. **Verify Installation**
    - Click the Extensions icon in Firefox's toolbar
    - Find "CodeSolver Pro" and click it
    - The sidebar should open
-
-
 
 ### First Time Setup
 
@@ -67,7 +50,7 @@ Better than other extensions - Its free and private. Can integrate locally with 
    - Open a problem page
 
 2. **Configure AI Provider**
-   - Click the **Settings** (gear icon) in the side panel
+   - Click the **Settings** (gear icon) in the sidebar
    - Click **"Add Profile"**
    - Choose your AI provider:
      - **OpenAI**: Get API key from https://platform.openai.com/api-keys
@@ -217,19 +200,18 @@ Model: llama3.1
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Technical Details
 
-This extension uses Chrome's Manifest V3 with:
-- **Side Panel API**: Integrated experience without opening new tabs
-- **Content Scripts**: Problem detection and parsing
-- **Injected Scripts**: Page-context focus protection
-- **Service Worker**: Background processing and tab management
+**API Used**: browser.*
+**Manifest Version**: V2
+**Panel Type**: Sidebar
+**Minimum Firefox Version**: 115
 
 ---
 
 ## 🔒 Privacy & Security
 
-- **Local Storage Only**: All data stored in `chrome.storage.local`
+- **Local Storage Only**: All data stored in `browser.storage.local`
 - **No External Servers**: No data sent except to configured AI APIs
 - **API Keys**: Stored securely, never shared
 - **No Analytics**: No usage tracking or data collection
@@ -239,7 +221,7 @@ This extension uses Chrome's Manifest V3 with:
 
 ## 📋 Requirements
 
-- **Chrome Browser**: Version 114 or higher (for Side Panel API)
+- **Firefox Browser**: Version 115 or higher
 - **AI Provider**: API key or local LLM setup
 
 ---
@@ -255,13 +237,15 @@ This extension uses Chrome's Manifest V3 with:
 - Verify API key is correct
 - Check API credits/quota
 - Try a different profile
-- Check Network tab for errors
+- Check Browser Console for errors (F12)
 
 **Problem: Focus protection not working**
 - Refresh the problem page
-- Re-open the side panel
+- Re-open the sidebar
 - Check console for errors
 - Note: Some platforms have advanced detection
+
+**Debug URL**: `about:debugging#/runtime/this-firefox`
 
 ---
 
@@ -302,6 +286,8 @@ Contributions are welcome! Please visit the [main repository](../../) to:
 
 [GitHub](../../) • [Issues](../../issues) • [Releases](../../releases)
 
-**Version 1.0.0** • Built on 2026-02-16
+**Version 1.0.0** • Built on 2026-02-17
+
+**Firefox Edition**
 
 </div>
