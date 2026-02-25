@@ -1,4 +1,4 @@
-# CodeSolver Pro - Chrome Extension
+# CodeSolver Pro - Chrome / Firefox Extension
 
 <div align="center">
 
@@ -6,16 +6,23 @@
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green?logo=google-chrome)](https://chrome.google.com/webstore)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add-on-orange?logo=firefox)]
+
 [![Manifest V2](https://img.shields.io/badge/Manifest-V2-blue)]
 [![Version](https://img.shields.io/badge/Version-1.0.0-orange)]
 
-An intelligent Chrome extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
+An intelligent Chrome / Firefox extension that helps you solve coding interview problems by leveraging AI models while keeping your assistance undetectable through advanced focus protection techniques.
 This extension can solve coding problems with undetectable focus protection. Supports 30+ platforms including LeetCode, HackerRank, and more. 
 
 Better than other extensions - Its free and private. Can integrate locally with ollama, llama.cpp server.
 
 </div>
+
+---
+### Click below to view the extension working video:
+
+
+- [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/QX0T8DcmDpw/0.jpg)](https://www.youtube.com/watch?v=QX0T8DcmDpw)
+
 
 ---
 
@@ -201,7 +208,12 @@ Temperature: 0.2
 curl -fsSL https://ollama.ai/install.sh | sh
 
 # Pull a model
-ollama pull llama3.1
+ollama pull llama3.2
+
+Also check if the following is working:
+ curl http://localhost:11434/api/tags
+
+If it does not work, check out the https://docs.ollama.com/faq
 
 # Configure in extension
 Provider: local
