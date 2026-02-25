@@ -215,6 +215,9 @@ Also check if the following is working:
 
 If it does not work, check out the https://docs.ollama.com/faq
 
+Tip:
+ ```export OLLAMA_ORIGINS="http://localhost,https://localhost,http://localhost:*,https://localhost:*,http://127.0.0.1,https://127.0.0.1,http://127.0.0.1:*,https://127.0.0.1:*,http://0.0.0.0,https://0.0.0.0,http://0.0.0.0:*,https://0.0.0.0:*,app://*,file://*,tauri://*,vscode-webview://*,vscode-file://*,chrome-extension://*,safari-extension://*,moz-extension://*,ms-browser-extension://*"; ollama serve```
+
 # Configure in extension
 Provider: local
 URL: http://localhost:11434/v1/chat/completions
