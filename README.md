@@ -215,8 +215,15 @@ Also check if the following is working:
 
 If it does not work, check out the https://docs.ollama.com/faq
 
-Tip:
+For Mac/Linux, we can call ollama from shell:
  ```export OLLAMA_ORIGINS="http://localhost,https://localhost,http://localhost:*,https://localhost:*,http://127.0.0.1,https://127.0.0.1,http://127.0.0.1:*,https://127.0.0.1:*,http://0.0.0.0,https://0.0.0.0,http://0.0.0.0:*,https://0.0.0.0:*,app://*,file://*,tauri://*,vscode-webview://*,vscode-file://*,chrome-extension://*,safari-extension://*,moz-extension://*,ms-browser-extension://*"; ollama serve```
+
+ For Mac:
+  - Run the following for persistence:
+   - launchctl setenv OLLAMA_ORIGINS "http://localhost,https://localhost,http://localhost:*,https://localhost:*,http://127.0.0.1,https://127.0.0.1,http://127.0.0.1:*,https://127.0.0.1:*,http://0.0.0.0,https://0.0.0.0,http://0.0.0.0:*,https://0.0.0.0:*,app://*,file://*,tauri://*,vscode-webview://*,vscode-file://*,chrome-extension://*,safari-extension://*,moz-extension://*,ms-browser-extension://*"
+
+ For Windows/Linux:
+   - Checkout the FAQ section - https://docs.ollama.com/faq#how-do-i-configure-ollama-server
 
 # Configure in extension
 Provider: local
